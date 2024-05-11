@@ -1,27 +1,19 @@
-n, m = map(int, input().split())
-arr = input()
-happy = [int(i) for i in input().split()] # W M L 開心度
-time = [int(i) for i in input().split()] # W M L 時間
-
+#差分
+n, m = map(int,input().split())
+s = input()
+a = [int(s) for s in input().split()]
+b = [int(s) for s in input().split()]
+o = {"W":0, "M":1, "L":2} #b的位置
+c = [0]*n #時間圖
+for i, ch in enumerate(s):
+    j = o[ch]
+    c[i] += a[j]
+    p = i+b[j]
+    if p<n: #判斷會不會超出串列長度
+        c[p] -= a[j]
 ans = 0
-happy_mon = [0, 0, 0]
-happy_time = [0, 0, 0]
-for i in arr:
-    for idx in range(3):
-        if not(happy_time[idx]):
-            happy_mon[idx] = 0
-    if i == 'W':
-        happy_mon[0] += happy[0]
-        happy_time[0] = time[0]
-    elif i == 'M':
-        happy_mon[1] += happy[1]
-        happy_time[1] = time[1]
-    else:
-        happy_mon[2] += happy[2]
-        happy_time[2] = time[2]
-    if sum(happy_mon) > m:
-        ans += 1
-    happy_time = [i-1 for i in happy_time]
+cur = 0
+for i in c:
+    cur += i
+    ans += cur>m
 print(ans)
-
-# 90分

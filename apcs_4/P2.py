@@ -1,3 +1,4 @@
+#模擬
 arr = [["A", "B", "C", "D", "E", "F", "G", "H"],
        ["I", "J", "K", "L", "M", "N", "O", "P"],
        ["Q", "R", "S", "T", "U", "V", "W", "X"],
@@ -21,6 +22,3 @@ for _ in range(int(input())):
         y = (y+(add_y*D))%8
         D += 1
     print(arr[x][y])
-
-
-#100分
